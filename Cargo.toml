@@ -1,0 +1,26 @@
+cargo-features = ["profile-overrides"]
+
+[package]
+name = "hale-sample"
+version = "0.1.0"
+authors = ["not-fl3 <not.fl3@gmail.com>"]
+edition = "2018"
+
+[profile.dev.overrides."*"]
+opt-level = 2
+
+[dependencies]
+gen = { path = "../hale/gen" }
+hale = { path = "../hale/" }
+cgmath = "0.17.0"
+float-ord = "0.2.0"
+shrev = "1.1.1"
+ggez = "0.5"
+rand = "0.7"
+log = "0.4"
+
+serde = { version = "1.0", features=["derive"] }
+serde_json = "1.0"
+serde_yaml = "0.8"
+
+env_logger = "0.7"

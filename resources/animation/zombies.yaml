@@ -1,0 +1,22 @@
+---
+name: "zombies"
+spriteSheet: "trapped_sprites.json"
+material: "Halley/Sprite"
+sequences:
+  - name: "zombie1"
+    fps: 12
+    fileName: "zombie1/%f:02%.png"
+    frames: [1-6]
+  - name: "zombie2"
+    fps: 12
+    fileName: "zombie2/%f:02%.png"
+    frames: [1-6]
+  - name: "zombie3"
+    fps: 12
+    fileName: "zombie3/%f:02%.png"
+    frames: [1-6]
+  - name: "zombie4"
+    fps: 12
+    fileName: "zombie4/%f:02%.png"
+    frames: [1-6]
+...

@@ -1,6 +1,6 @@
 use hale::{FamilyContainer, MessageSender};
 
-use crate::def::{check_dynamic_collision::*, Collision};
+use crate::{check_dynamic_collision::*, Collision};
 
 impl CheckDynamicCollisionSystem {
     pub fn update(

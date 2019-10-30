@@ -1,4 +1,4 @@
-use crate::def::integrate_velocity::*;
+use crate::integrate_velocity::*;
 
 impl IntegrateVelocitySystem {
     pub fn update(&mut self, time: hale::Time, e: MainFamily) {

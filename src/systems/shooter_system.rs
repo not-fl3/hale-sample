@@ -1,4 +1,4 @@
-use crate::def::{shooter::*, *};
+use crate::{shooter::*, *};
 
 impl ShooterSystem {
     pub fn update(&mut self, p: hale::Time, e: MainFamily) {

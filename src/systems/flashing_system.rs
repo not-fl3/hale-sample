@@ -1,4 +1,4 @@
-use crate::def::{flashing::*, Damage};
+use crate::{flashing::*, Damage};
 
 impl FlashingSystem {
     pub fn update(&mut self, time: hale::Time, e: MainFamily) {

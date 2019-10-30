@@ -1,8 +1,7 @@
 use hale::{api, World};
 
-use crate::def::*;
+hale::gen!("resources/hale-sample.yaml");
 
-mod def;
 mod systems;
 
 struct GameStage;

@@ -1,4 +1,4 @@
-use crate::def::player_seeking::*;
+use crate::player_seeking::*;
 use hale::FamilyContainer;
 
 impl PlayerSeekingSystem {

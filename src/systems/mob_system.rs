@@ -1,4 +1,4 @@
-use crate::def::mob::*;
+use crate::mob::*;
 
 impl MobSystem {
     pub fn update(&mut self, _: hale::Time, entity: MainFamily) {

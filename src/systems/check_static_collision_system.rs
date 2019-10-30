@@ -1,6 +1,6 @@
 use hale::{EntityId, FamilyContainer, MessageSender, Rect, Vector2};
 
-use crate::def::{check_static_collision::*, Collision};
+use crate::{check_static_collision::*, Collision};
 
 impl CheckStaticCollisionSystem {
     pub fn update(

@@ -1,4 +1,4 @@
-use crate::def::{damage::*, Damage, Death};
+use crate::{damage::*, Damage, Death};
 use hale::MessageSender;
 
 impl DamageSystem {

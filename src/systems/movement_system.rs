@@ -1,4 +1,4 @@
-use crate::def::movement::*;
+use crate::movement::*;
 
 impl MovementSystem {
     pub fn update(&mut self, _: hale::Time, e: MainFamily) {

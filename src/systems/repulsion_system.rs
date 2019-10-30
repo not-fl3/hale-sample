@@ -1,4 +1,4 @@
-use crate::def::{repulsion::*, Collision, *};
+use crate::{repulsion::*, Collision, *};
 
 impl RepulsionSystem {
     pub fn update(&mut self, _: hale::Time, _: MainFamily) {}

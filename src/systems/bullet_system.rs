@@ -1,4 +1,4 @@
-use crate::def::{bullet::*, Collision, Damage};
+use crate::{bullet::*, Collision, Damage};
 use hale::MessageSender;
 
 impl BulletSystem {

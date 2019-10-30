@@ -1,4 +1,4 @@
-use crate::def::sprite_render::*;
+use crate::sprite_render::*;
 use hale::FamilyContainer;
 
 impl SpriteRenderSystem {

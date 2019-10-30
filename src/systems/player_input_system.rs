@@ -1,4 +1,4 @@
-use crate::def::player_input::*;
+use crate::player_input::*;
 
 impl PlayerInputSystem {
     pub fn update(&mut self, _: hale::Time, entity: MainFamily) {

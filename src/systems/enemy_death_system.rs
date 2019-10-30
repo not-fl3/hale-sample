@@ -1,4 +1,4 @@
-use crate::def::{enemy_death::*, Death};
+use crate::{enemy_death::*, Death};
 
 impl EnemyDeathSystem {
     pub fn update(&mut self, _: hale::Time, _: MainFamily) {}

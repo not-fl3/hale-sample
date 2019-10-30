@@ -1,4 +1,4 @@
-use crate::def::ttl::*;
+use crate::ttl::*;
 
 impl TTLSystem {
     pub fn update(&mut self, delta: hale::Time, entity: MainFamily) {

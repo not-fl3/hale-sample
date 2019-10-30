@@ -1,4 +1,4 @@
-use crate::def::sprite_animation::*;
+use crate::sprite_animation::*;
 
 impl SpriteAnimationSystem {
     pub fn update(&mut self, delta: hale::Time, e: MainFamily) {

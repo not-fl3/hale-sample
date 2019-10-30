@@ -146,6 +146,7 @@ system:
       - Mob: write
       - Shooter: write
       - PlayerInput: read
+      - SpriteAnimation: write
 
 ---
 

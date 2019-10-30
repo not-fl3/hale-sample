@@ -1,0 +1,19 @@
+---
+name: "Knight"
+spriteSheet: "knight.json"
+material: "Halley/Sprite"
+directions:
+  - { name: "up" }
+  - { name: "right" }
+  - { name: "down" }
+  - { name: "left" }
+sequences:
+  - name: "idle"
+    fps: 12
+    fileName: "knight iso char_idle_%f:01%.png"
+    frames: [0-3]
+  - name: "run"
+    fps: 12
+    fileName: "knight iso char_run %dir%_%f:01%.png"
+    frames: [0-5]
+...

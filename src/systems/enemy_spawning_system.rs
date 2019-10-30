@@ -45,8 +45,8 @@ impl EnemySpawningSystem {
             })
             .add_component(SpriteAnimation {
                 player: hale::AnimationPlayer::new(
-                    api.get_resource::<hale::api::Animation>("zombies"),
-                    &format!("zombie{}", hale::rand::gen_range(1, 5)),
+                    api.get_resource::<hale::api::Animation>("enemies"),
+                    &format!("enemy{}", hale::rand::gen_range(1, 5)),
                     "default",
                 ),
             })

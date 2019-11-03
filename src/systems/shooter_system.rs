@@ -26,7 +26,7 @@ impl ShooterSystem {
         player_vel: hale::Vector2,
     ) {
         let vel = dir * 500. + player_vel * 0.5;
-        let origin = pos + hale::Vector2::new(0., 15.) + vel * 0.016;
+        let origin = pos + hale::Vector2::new(0., 5.) + vel * 0.016;
         let ttl = 0.4;
         let damage = 1;
 
@@ -40,7 +40,7 @@ impl ShooterSystem {
             })
             .add_component(Sprite {
                 sprite: hale::api::Sprite::new()
-                    .with_spritesheet(api.resources(), "trapped_sprites.json", "simple_bullet.png")
+                    .with_spritesheet(api.resources(), "spritesheet.json", "bullet.png")
                     .with_pivot(hale::Vector2::new(0.5, 0.5)),
                 layer: 0,
             })

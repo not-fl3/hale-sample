@@ -18,7 +18,7 @@ fn create_player(world: &mut World, api: &mut api::Api, position: hale::Point2) 
         })
         .add_component(SpriteAnimation {
             player: hale::AnimationPlayer::new(
-                api.get_resource::<hale::api::Animation>("Knight"),
+                api.get_resource::<hale::api::Animation>("Player"),
                 "idle",
                 "default",
             ),

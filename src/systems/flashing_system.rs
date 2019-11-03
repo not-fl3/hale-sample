@@ -19,7 +19,7 @@ impl FlashingSystem {
     }
 
     pub fn on_message_received(&mut self, entity: MainFamily, _: &Damage) {
-        entity.flashing.colour = hale::Color::from_rgba(1.0, 0.0, 0.0, 1.0);
+        entity.flashing.colour = hale::Color::from_rgba(0.0, 0.0, 1.0, 1.0);
         entity.flashing.cur_time = 0.0;
         entity.flashing.total_time = 0.1;
         entity.flashing.active = true;

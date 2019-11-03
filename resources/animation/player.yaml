@@ -1,0 +1,20 @@
+---
+name: "Player"
+spriteSheet: "spritesheet.json"
+material: "Hale/Sprite"
+directions:
+  - { name: "up" }
+  - { name: "right" }
+  - { name: "down", fileName: "up" }
+  - { name: "left", fileName: "right", flip: true }
+sequences:
+  - name: "idle"
+    fps: 10
+    fileName: "player_idle%f:01%.png"
+    frames: [1-2]
+    noFlip: true
+  - name: "run"
+    fps: 10
+    fileName: "player_run_%dir%%f:01%.png"
+    frames: [1-2]
+...

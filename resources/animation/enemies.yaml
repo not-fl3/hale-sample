@@ -1,22 +1,22 @@
 ---
 name: "enemies"
-spriteSheet: "knight.json"
-material: "Halley/Sprite"
+spriteSheet: "spritesheet.json"
+material: "Hale/Sprite"
 sequences:
   - name: "enemy1"
-    fps: 12
-    fileName: "axeman_idle_%f:01%.png"
-    frames: [0-3]
+    fps: 20
+    fileName: "enemy%f:01%.png"
+    frames: [1-6]  
   - name: "enemy2"
-    fps: 12
-    fileName: "bat-%f:01%.png"
-    frames: [0-4]  
+    fps: 20
+    fileName: "enemy%f:01%.png"
+    frames: [1-6]  
   - name: "enemy3"
-    fps: 12
-    fileName: "axeman_idle_%f:01%.png"
-    frames: [0-3]  
+    fps: 20
+    fileName: "enemy%f:01%.png"
+    frames: [1-6]  
   - name: "enemy4"
-    fps: 12
-    fileName: "axeman_idle_%f:01%.png"
-    frames: [0-3]  
+    fps: 20
+    fileName: "enemy%f:01%.png"
+    frames: [1-6]  
 ...

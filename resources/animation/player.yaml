@@ -3,18 +3,18 @@ name: "Player"
 spriteSheet: "spritesheet.json"
 material: "Hale/Sprite"
 directions:
-  - { name: "up" }
-  - { name: "right" }
-  - { name: "down", fileName: "up" }
-  - { name: "left", fileName: "right", flip: true }
+  - { name: "north" }
+  - { name: "right", fileName: "side" }
+  - { name: "south" }
+  - { name: "left", fileName: "side", flip: true }
 sequences:
   - name: "idle"
     fps: 10
-    fileName: "player_idle%f:01%.png"
-    frames: [1-2]
+    fileName: "1.png"
+    frames: [1-1]
     noFlip: true
   - name: "run"
     fps: 10
-    fileName: "player_run_%dir%%f:01%.png"
-    frames: [1-2]
+    fileName: "1_%dir%_%f:01%.png"
+    frames: [0-3]
 ...

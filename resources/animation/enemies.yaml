@@ -1,22 +1,15 @@
 ---
-name: "enemies"
+name: "Enemy"
 spriteSheet: "spritesheet.json"
 material: "Hale/Sprite"
-sequences:
-  - name: "enemy1"
-    fps: 7
-    fileName: "enemy%f:01%.png"
-    frames: [1-2]  
-  - name: "enemy2"
-    fps: 7
-    fileName: "enemy%f:01%.png"
-    frames: [1-2]  
-  - name: "enemy3"
-    fps: 7
-    fileName: "enemy%f:01%.png"
-    frames: [1-2]  
-  - name: "enemy4"
-    fps: 7
-    fileName: "enemy%f:01%.png"
-    frames: [1-2]  
+directions:
+  - { name: "north", fileName: "back" }
+  - { name: "right", fileName: "side", flip: true }
+  - { name: "south", fileName: "front" }
+  - { name: "left", fileName: "side" }
+sequences:  
+  - name: "default"
+    fps: 10
+    fileName: "slime1_%dir%_%f:01%.png"
+    frames: [0-3]
 ...

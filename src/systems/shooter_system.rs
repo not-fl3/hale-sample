@@ -40,7 +40,9 @@ impl ShooterSystem {
             })
             .add_component(Sprite {
                 sprite: hale::api::Sprite::new()
-                    .with_spritesheet(api.resources(), "spritesheet.json", "bullet.png")
+                    .with_spritesheet(api.resources(), 
+                        "spritesheet.json", 
+                        &format!("flamethrower_bullet_{}.png", hale::rand::gen_range(0, 1)))
                     .with_pivot(hale::Vector2::new(0.5, 0.5)),
                 layer: 0,
             })

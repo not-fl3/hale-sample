@@ -181,77 +181,125 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">BG_0.png</key>
+            <key type="filename">sprites_soup/1_diagdown_0.png</key>
+            <key type="filename">sprites_soup/1_diagdown_1.png</key>
+            <key type="filename">sprites_soup/1_diagdown_2.png</key>
+            <key type="filename">sprites_soup/1_diagdown_3.png</key>
+            <key type="filename">sprites_soup/1_diagup_0.png</key>
+            <key type="filename">sprites_soup/1_diagup_1.png</key>
+            <key type="filename">sprites_soup/1_diagup_2.png</key>
+            <key type="filename">sprites_soup/1_diagup_3.png</key>
+            <key type="filename">sprites_soup/1_north_0.png</key>
+            <key type="filename">sprites_soup/1_north_1.png</key>
+            <key type="filename">sprites_soup/1_north_2.png</key>
+            <key type="filename">sprites_soup/1_north_3.png</key>
+            <key type="filename">sprites_soup/1_side_0.png</key>
+            <key type="filename">sprites_soup/1_side_1.png</key>
+            <key type="filename">sprites_soup/1_side_2.png</key>
+            <key type="filename">sprites_soup/1_side_3.png</key>
+            <key type="filename">sprites_soup/1_south_0.png</key>
+            <key type="filename">sprites_soup/1_south_1.png</key>
+            <key type="filename">sprites_soup/1_south_2.png</key>
+            <key type="filename">sprites_soup/1_south_3.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>176,176,351,351</rect>
+                <rect>5,6,9,11</rect>
                 <key>scale9Paddings</key>
-                <rect>176,176,351,351</rect>
+                <rect>5,6,9,11</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">bullet.png</key>
+            <key type="filename">sprites_soup/flamethrower_bullet_0.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>2,2,4,4</rect>
+                <rect>3,2,6,4</rect>
                 <key>scale9Paddings</key>
-                <rect>2,2,4,4</rect>
+                <rect>3,2,6,4</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">enemy1.png</key>
-            <key type="filename">enemy2.png</key>
+            <key type="filename">sprites_soup/flamethrower_bullet_1.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>16,16,32,32</rect>
+                <rect>3,2,5,4</rect>
                 <key>scale9Paddings</key>
-                <rect>16,16,32,32</rect>
+                <rect>3,2,5,4</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">player_idle1.png</key>
-            <key type="filename">player_idle2.png</key>
-            <key type="filename">player_run_right1.png</key>
-            <key type="filename">player_run_right2.png</key>
-            <key type="filename">player_run_up1.png</key>
-            <key type="filename">player_run_up2.png</key>
+            <key type="filename">sprites_soup/slime1_back_0.png</key>
+            <key type="filename">sprites_soup/slime1_back_1.png</key>
+            <key type="filename">sprites_soup/slime1_back_2.png</key>
+            <key type="filename">sprites_soup/slime1_back_3.png</key>
+            <key type="filename">sprites_soup/slime1_front_0.png</key>
+            <key type="filename">sprites_soup/slime1_front_1.png</key>
+            <key type="filename">sprites_soup/slime1_front_2.png</key>
+            <key type="filename">sprites_soup/slime1_front_3.png</key>
+            <key type="filename">sprites_soup/slime1_side_0.png</key>
+            <key type="filename">sprites_soup/slime1_side_1.png</key>
+            <key type="filename">sprites_soup/slime1_side_2.png</key>
+            <key type="filename">sprites_soup/slime1_side_3.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>32,32,64,64</rect>
+                <rect>4,4,7,7</rect>
                 <key>scale9Paddings</key>
-                <rect>32,32,64,64</rect>
+                <rect>4,4,7,7</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
         </map>
         <key>fileList</key>
         <array>
-            <filename>player_run_up2.png</filename>
-            <filename>player_run_up1.png</filename>
-            <filename>player_run_right2.png</filename>
-            <filename>player_run_right1.png</filename>
-            <filename>player_idle2.png</filename>
-            <filename>player_idle1.png</filename>
-            <filename>enemy2.png</filename>
-            <filename>enemy1.png</filename>
-            <filename>bullet.png</filename>
-            <filename>BG_0.png</filename>
+            <filename>sprites_soup/slime1_side_3.png</filename>
+            <filename>sprites_soup/slime1_side_2.png</filename>
+            <filename>sprites_soup/slime1_side_1.png</filename>
+            <filename>sprites_soup/slime1_side_0.png</filename>
+            <filename>sprites_soup/slime1_front_3.png</filename>
+            <filename>sprites_soup/slime1_front_2.png</filename>
+            <filename>sprites_soup/slime1_front_1.png</filename>
+            <filename>sprites_soup/slime1_front_0.png</filename>
+            <filename>sprites_soup/slime1_back_3.png</filename>
+            <filename>sprites_soup/slime1_back_2.png</filename>
+            <filename>sprites_soup/slime1_back_1.png</filename>
+            <filename>sprites_soup/slime1_back_0.png</filename>
+            <filename>sprites_soup/1_south_3.png</filename>
+            <filename>sprites_soup/1_south_2.png</filename>
+            <filename>sprites_soup/1_south_1.png</filename>
+            <filename>sprites_soup/1_south_0.png</filename>
+            <filename>sprites_soup/1_side_3.png</filename>
+            <filename>sprites_soup/1_side_2.png</filename>
+            <filename>sprites_soup/1_side_1.png</filename>
+            <filename>sprites_soup/1_side_0.png</filename>
+            <filename>sprites_soup/1_north_3.png</filename>
+            <filename>sprites_soup/1_north_2.png</filename>
+            <filename>sprites_soup/1_north_1.png</filename>
+            <filename>sprites_soup/1_north_0.png</filename>
+            <filename>sprites_soup/1_diagup_3.png</filename>
+            <filename>sprites_soup/1_diagup_2.png</filename>
+            <filename>sprites_soup/1_diagup_1.png</filename>
+            <filename>sprites_soup/1_diagup_0.png</filename>
+            <filename>sprites_soup/1_diagdown_3.png</filename>
+            <filename>sprites_soup/1_diagdown_2.png</filename>
+            <filename>sprites_soup/1_diagdown_1.png</filename>
+            <filename>sprites_soup/1_diagdown_0.png</filename>
+            <filename>sprites_soup/flamethrower_bullet_1.png</filename>
+            <filename>sprites_soup/flamethrower_bullet_0.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

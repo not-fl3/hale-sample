@@ -72,21 +72,21 @@ fn create_obstacle(world: &mut World, rect: hale::Rect) {
 }
 
 fn create_room(world: &mut World, api: &mut api::Api, pos: hale::Point2, id: hale::EntityId) {
-    world
-        .create_entity()
-        .add_component(Position {
-            position: pos + hale::Vector2::new(350.0, 350.0),
-        })
-        .add_component(Sprite {
-            sprite: hale::api::Sprite::new()
-                .with_spritesheet(
-                    api.resources(),
-                    "spritesheet.json",
-                    "BG_0.png",
-                )
-                .with_pivot(hale::Vector2::new(0.5, 0.5)),
-            layer: -20,
-        });
+    // world
+    //     .create_entity()
+    //     .add_component(Position {
+    //         position: pos + hale::Vector2::new(350.0, 350.0),
+    //     })
+    //     .add_component(Sprite {
+    //         sprite: hale::api::Sprite::new()
+    //             .with_spritesheet(
+    //                 api.resources(),
+    //                 "spritesheet.json",
+    //                 "BG_0.png",
+    //             )
+    //             .with_pivot(hale::Vector2::new(0.5, 0.5)),
+    //         layer: -20,
+    //     });
 
     // Enemy spawners
     let x0 = 125.0;

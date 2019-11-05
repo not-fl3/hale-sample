@@ -1,6 +1,6 @@
-use crate::sprite_animation::*;
+use crate::enemy_animation::*;
 
-impl SpriteAnimationSystem {
+impl EnemyAnimationSystem {
     pub fn update(&mut self, delta: hale::Time, e: MainFamily) {
         let sprite = &mut e.sprite.sprite;
 

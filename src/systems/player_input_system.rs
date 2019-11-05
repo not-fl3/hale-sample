@@ -17,11 +17,5 @@ impl PlayerInputSystem {
 
         entity.shooter.shooting = shooting;
         entity.shooter.shoot_dir = face_dir.unit();
-
-        if move_dir.length() > 0.1 {
-            entity.sprite_animation.player.set_sequence("run");
-        } else {
-            entity.sprite_animation.player.set_sequence("idle");
-        }
     }
 }

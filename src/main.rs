@@ -1,6 +1,6 @@
 use hale::{api, World};
 
-hale::gen!("resources/hale-sample.yaml");
+hale::gen!("src/hale-sample.yaml");
 
 mod systems;
 
@@ -9,6 +9,26 @@ struct GameStage;
 impl api::Stage for GameStage {}
 
 fn create_player(world: &mut World, api: &mut api::Api, position: hale::Point2) {
+    let weapon = world
+        .create_entity()
+        .add_component(Position { position })
+        .add_component(Sprite {
+            sprite: hale::api::Sprite::new(),
+            layer: 0,
+        })
+        .add_component(SpriteAnimation {
+            player: hale::AnimationPlayer::new(
+                api.get_resource::<hale::api::Animation>("Flamethrower"),
+                "default",
+                "default",
+            ),
+        })
+        .add_component(Gun {
+            cooldown: 0.1,
+            kind: "flamethrower".to_string(),
+        })        
+        .uid();
+
     world
         .create_entity()
         .add_component(Position { position })
@@ -41,10 +61,7 @@ fn create_player(world: &mut World, api: &mut api::Api, position: hale::Point2) 
             shooting: false,
             shoot_dir: hale::Vector2::new(0., 0.),
             cooldown: 0.0,
-        })
-        .add_component(Gun {
-            cooldown: 0.1,
-            kind: "machinegun".to_string(),
+            weapon
         })
         .add_component(Collider {
             rect: hale::Rect::new(-13.0, -13.0, 26.0, 26.0),
@@ -53,6 +70,17 @@ fn create_player(world: &mut World, api: &mut api::Api, position: hale::Point2) 
             is_static: false,
         })
         .add_component(RepulseField { multiplier: 10.0 });
+}
+
+fn create_camera(world: &mut World, target: hale::Point2) {
+    world
+        .create_entity()
+        .add_component(Camera {
+            camera: hale::Camera {
+                target,
+                scale: hale::Vector2::new(0.3, 0.3)
+            }
+        });
 }
 
 fn create_obstacle(world: &mut World, rect: hale::Rect) {
@@ -72,21 +100,21 @@ fn create_obstacle(world: &mut World, rect: hale::Rect) {
 }
 
 fn create_room(world: &mut World, api: &mut api::Api, pos: hale::Point2, id: hale::EntityId) {
-    // world
-    //     .create_entity()
-    //     .add_component(Position {
-    //         position: pos + hale::Vector2::new(350.0, 350.0),
-    //     })
-    //     .add_component(Sprite {
-    //         sprite: hale::api::Sprite::new()
-    //             .with_spritesheet(
-    //                 api.resources(),
-    //                 "spritesheet.json",
-    //                 "BG_0.png",
-    //             )
-    //             .with_pivot(hale::Vector2::new(0.5, 0.5)),
-    //         layer: -20,
-    //     });
+    world
+        .create_entity()
+        .add_component(Position {
+            position: pos + hale::Vector2::new(350.0, 350.0),
+        })
+        .add_component(Sprite {
+            sprite: hale::api::Sprite::new()
+                .with_spritesheet(
+                    api.resources(),
+                    "spritesheet.json",
+                    "BG_0.png",
+                )
+                .with_pivot(hale::Vector2::new(0.5, 0.5)),
+            layer: -20,
+        });
 
     // Enemy spawners
     let x0 = 125.0;
@@ -155,6 +183,7 @@ fn main() {
         register_systems(world, api);
 
         create_player(world, api, hale::Point2::new(350.0, 350.0));
+        create_camera(world, hale::Point2::new(350.0, 350.0));
         create_room(world, api, get_room_offset(0), 0);
 
         create_walls(world);

@@ -1,16 +1,20 @@
+use hale::FamilyContainer;
+
 use crate::{shooter::*, *};
 
 impl ShooterSystem {
-    pub fn update(&mut self, p: hale::Time, e: MainFamily) {
+    pub fn update(&mut self, p: hale::Time, e: MainFamily, guns: &FamilyContainer<WeaponsFamily>) {
+        let gun = guns.get_by_id(e.shooter.weapon).gun;
+
         let cooldown = &mut e.shooter.cooldown;
         if *cooldown > 0. {
             *cooldown = (*cooldown - p).max(0.0);
         }
 
         if e.shooter.shooting && *cooldown < 0.01 {
-            *cooldown = e.gun.cooldown;
+            *cooldown = gun.cooldown;
             self.spawn_bullet(
-                &e.gun.kind,
+                &gun.kind,
                 e.position.position,
                 e.shooter.shoot_dir,
                 e.velocity.velocity,

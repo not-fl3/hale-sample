@@ -100,6 +100,7 @@ component:
     - shooting: bool
     - shoot_dir: hale::Vector2
     - cooldown: f32
+    - weapon: hale::EntityId
 
 ---
 
@@ -137,6 +138,13 @@ component:
 
 ---
 
+component: 
+  name: Camera
+  members:
+    - camera: hale::Camera
+
+---
+
 system: 
   name: PlayerInput
   families:
@@ -144,7 +152,6 @@ system:
       - Mob: write
       - Shooter: write
       - PlayerInput: read
-      - SpriteAnimation: write
 
 ---
 
@@ -239,6 +246,7 @@ system:
       - Shooter: write
       - Position: read
       - Velocity: read
+    - weapons:
       - Gun: read
   access: ['world', 'api']
 
@@ -314,12 +322,41 @@ system:
 ---
 
 system: 
-  name: SpriteAnimation
+  name: EnemyAnimation
   families:
     - main:
       - Sprite: write
       - SpriteAnimation: write
       - Mob: read
+      - Enemy: read
+
+---
+
+system: 
+  name: PlayerAnimation
+  families:
+    - main:
+      - Sprite: write
+      - SpriteAnimation: write
+      - Mob: read
+      - Player: read
+      - Shooter: read
+      - Position: read
+    - weapons:
+      - Position: write
+      - Sprite: write
+      - SpriteAnimation: write
+
+---
+
+system:
+  name: CameraFollow
+  families:
+    - main:
+      - Camera: write
+    - player:
+      - Player: read
+      - Position: read
 
 ---
 
@@ -329,10 +366,13 @@ system:
     - main:
       - Position: read
       - Sprite: write
+    - camera:
+      - Camera: read
   method: render
   strategy: global
 
 ---
+
 
 message: 
   name: Collision

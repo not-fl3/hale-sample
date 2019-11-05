@@ -22,7 +22,7 @@ impl EnemySpawningSystem {
                 .collect::<Vec<_>>();
 
             if eligible.len() > 0 {
-                let mut rng = hale::rand::thread_rng();
+                let mut rng = hale::rand::rng();
 
                 let choice = eligible.iter_mut().choose(&mut rng).unwrap();
 

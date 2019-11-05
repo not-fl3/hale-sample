@@ -213,6 +213,19 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">sprites_soup/BG_0.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>128,128,256,256</rect>
+                <key>scale9Paddings</key>
+                <rect>128,128,256,256</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">sprites_soup/flamethrower_bullet_0.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -300,6 +313,7 @@
             <filename>sprites_soup/1_diagdown_0.png</filename>
             <filename>sprites_soup/flamethrower_bullet_1.png</filename>
             <filename>sprites_soup/flamethrower_bullet_0.png</filename>
+            <filename>sprites_soup/BG_0.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

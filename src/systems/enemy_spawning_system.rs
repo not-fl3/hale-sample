@@ -55,8 +55,8 @@ impl EnemySpawningSystem {
             .add_component(Mob {
                 move_dir: hale::Vector2::new(0.0, 0.0),
                 face_dir: hale::Vector2::new(0.0, 0.0),
-                accel: 30.,
-                max_speed: 60.,
+                accel: 15.,
+                max_speed: 30.,
             })
             .add_component(Enemy {})
             .add_component(Collider {
@@ -65,7 +65,7 @@ impl EnemySpawningSystem {
                 trigger: false,
                 is_static: false,
             })
-            .add_component(Health { max: 10, current: 10 })
+            .add_component(Health { max: 20, current: 20 })
             .add_component(RepulseField { multiplier: 3.0 })
             .add_component(Flashing {
                 active: false,

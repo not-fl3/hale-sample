@@ -391,6 +391,19 @@ system:
 
 ---
 
+system: 
+  name: HealthBarsRender
+  families:
+    - main:
+      - Position: read
+      - Health: read
+    - camera:
+      - Camera: write
+  method: render
+  strategy: global
+
+---
+
 
 message: 
   name: Collision

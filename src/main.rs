@@ -53,7 +53,7 @@ fn create_player(world: &mut World, api: &mut api::Api, position: hale::Point2) 
             move_dir: hale::Vector2::new(0.0, 0.0),
             face_dir: hale::Vector2::new(0.0, 0.0),
             accel: 50.,
-            max_speed: 200.,
+            max_speed: 150.,
         })
         .add_component(PlayerInput {
             input: api.get_virtual_input(),

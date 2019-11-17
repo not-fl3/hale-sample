@@ -5,9 +5,9 @@ impl SpriteRenderSystem {
     pub fn update(&mut self, _: hale::Time, main_family: &FamilyContainer<MainFamily>, camera: &FamilyContainer<CameraFamily>) {
         assert!(camera.len() == 1);
         let camera = camera.iter().next().unwrap().camera;
-
+        
         let api = self.get_api();
-        let mut painter = api.get_painter().with_camera(&camera.camera);
+        let mut painter = api.get_painter().with_camera(&mut camera.camera);
 
         let mut sprites = main_family.iter().collect::<Vec<_>>();
         sprites.sort_by_key(|s| s.sprite.layer);

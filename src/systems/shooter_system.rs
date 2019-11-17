@@ -29,9 +29,12 @@ impl ShooterSystem {
         dir: hale::Vector2,
         player_vel: hale::Vector2,
     ) {
-        let vel = dir * 500. + player_vel * 0.5;
-        let origin = pos + hale::Vector2::new(0., 5.) + vel * 0.016;
-        let ttl = 0.4;
+        let vel = dir * 300. + player_vel * 0.5
+             + hale::Vector2::new(hale::rand::gen_range(-20.0, 20.0), hale::rand::gen_range(-20.0, 20.0));
+        let origin = pos + dir * 15. + hale::Vector2::new(0., 5.) + vel * 0.016 
+            + hale::Vector2::new(hale::rand::gen_range(-3.0, 3.0), hale::rand::gen_range(-3.0, 3.0));
+
+        let ttl = 0.1;
         let damage = 1;
 
         let api = self.get_api();
@@ -46,13 +49,11 @@ impl ShooterSystem {
                 sprite: hale::api::Sprite::new()
                     .with_spritesheet(api.resources(), 
                         "spritesheet.json", 
-                        &format!("flamethrower_bullet_{}.png", hale::rand::gen_range(0, 1)))
-                    .with_pivot(hale::Vector2::new(0.5, 0.5)),
+                        &format!("flamethrower_bullet_{}.png", hale::rand::gen_range::<i32>(0, 1)))
+                    .with_pivot(hale::Vector2::new(0.5, 0.5))
+                    .with_rotation(vel.angle()),
                 layer: 0,
             })
-            // 	.setColour(Colour(1, 1, 0))
-            // 	.setPivot(Vector2f(0.5f, 0.5f))
-            // 	.setRotation(vel.angle()), 0))
             .add_component(Bullet { damage })
             .add_component(TTL { time_left: ttl })
             .add_component(Collider {

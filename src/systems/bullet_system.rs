@@ -5,7 +5,7 @@ impl BulletSystem {
     pub fn update(&mut self, _: hale::Time, _: MainFamily) {}
 
     pub fn on_message_received(&mut self, entity: MainFamily, msg: &Collision) {
-        if msg.other_layer != 0 {
+        if msg.other_layer == 1 {
             self.get_world().destroy_entity(entity.entity_id);
         }
 

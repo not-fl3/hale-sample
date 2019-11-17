@@ -1,6 +1,6 @@
 use crate::{enemy_spawning::*, *};
 use hale::{
-    rand::{IteratorRandom, Rng},
+    rand::{self, ChooseRandom},
     FamilyContainer,
 };
 
@@ -22,13 +22,11 @@ impl EnemySpawningSystem {
                 .collect::<Vec<_>>();
 
             if eligible.len() > 0 {
-                let mut rng = hale::rand::rng();
-
-                let choice = eligible.iter_mut().choose(&mut rng).unwrap();
+                let choice = eligible.choose().unwrap();
 
                 self.create_enemy(choice.position.position);
 
-                choice.enemy_spawner.cooldown = rng.gen_range(2.0, 5.0);
+                choice.enemy_spawner.cooldown = rand::gen_range(2.0, 5.0);
             }
         }
     }
@@ -62,13 +60,13 @@ impl EnemySpawningSystem {
             })
             .add_component(Enemy {})
             .add_component(Collider {
-                rect: hale::Rect::new(-18.0, -18.0, 36.0, 36.0),
+                rect: hale::Rect::new(-9.0, -9.0, 18.0, 18.0),
                 layer: 1,
                 trigger: false,
                 is_static: false,
             })
-            .add_component(Health { max: 3, current: 3 })
-            .add_component(RepulseField { multiplier: 5.0 })
+            .add_component(Health { max: 10, current: 10 })
+            .add_component(RepulseField { multiplier: 3.0 })
             .add_component(Flashing {
                 active: false,
                 total_time: 0.0,

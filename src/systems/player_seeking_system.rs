@@ -1,5 +1,6 @@
 use crate::player_seeking::*;
 use hale::FamilyContainer;
+use std::cmp::Ordering;
 
 impl PlayerSeekingSystem {
     pub fn update(
@@ -12,7 +13,11 @@ impl PlayerSeekingSystem {
         let my_pos = entity.position.position;
         let best_target = players
             .iter()
-            .min_by_key(|p| float_ord::FloatOrd((p.position.position - my_pos).squared_length()));
+            .min_by(|a, b| {
+                let a = (a.position.position - my_pos).squared_length();
+                let b = (b.position.position - my_pos).squared_length();
+                if a > b { Ordering::Greater } else { Ordering::Less }
+            });
 
         if let Some(best_target) = best_target {
             let target = best_target.position.position - my_pos;

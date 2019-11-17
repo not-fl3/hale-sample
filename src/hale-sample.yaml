@@ -142,6 +142,12 @@ component:
   name: Camera
   members:
     - camera: hale::Camera
+    - offset: hale::Point2
+
+---
+
+component:
+  name: Cursor
 
 ---
 
@@ -152,6 +158,12 @@ system:
       - Mob: write
       - Shooter: write
       - PlayerInput: read
+      - Position: read
+    - camera:
+      - Camera: read
+    - cursor:
+      - Cursor: read
+      - Position: write
 
 ---
 
@@ -346,6 +358,9 @@ system:
       - Position: write
       - Sprite: write
       - SpriteAnimation: write
+    - cursor:
+      - Position: read
+      - Cursor: read
 
 ---
 
@@ -357,6 +372,9 @@ system:
     - player:
       - Player: read
       - Position: read
+    - cursor:
+      - Position: read
+      - Cursor: read
 
 ---
 
@@ -367,7 +385,7 @@ system:
       - Position: read
       - Sprite: write
     - camera:
-      - Camera: read
+      - Camera: write
   method: render
   strategy: global
 

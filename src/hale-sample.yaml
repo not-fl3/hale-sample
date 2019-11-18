@@ -109,6 +109,7 @@ component:
   members:
     - cooldown: f32
     - kind: String
+    - muzzle: hale::Point2
 
 ---
 
@@ -358,6 +359,7 @@ system:
       - Position: write
       - Sprite: write
       - SpriteAnimation: write
+      - Gun: write
     - cursor:
       - Position: read
       - Cursor: read

@@ -28,6 +28,7 @@ fn create_player(world: &mut World, api: &mut api::Api, position: hale::Point2) 
         .add_component(Gun {
             cooldown: 0.01,
             kind: "flamethrower".to_string(),
+            muzzle: hale::Point2::new(0., 0.)
         })        
         .uid();
 

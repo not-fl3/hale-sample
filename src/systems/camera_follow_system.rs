@@ -15,6 +15,6 @@ impl CameraFollowSystem {
         
         e.camera.camera.target = player.position.position + e.camera.offset;
         
-        e.camera.offset = (delta.unit() * len.min(10.0)).to_point().lerp(e.camera.offset, 0.8);
+        e.camera.offset = (delta.unit() * len.min(20.0)).to_point().lerp(e.camera.offset, 0.8);
     }
 }

@@ -15,7 +15,7 @@ impl ShooterSystem {
             *cooldown = gun.cooldown;
             self.spawn_bullet(
                 &gun.kind,
-                e.position.position,
+                e.position.position + gun.muzzle,
                 e.shooter.shoot_dir,
                 e.velocity.velocity,
             );
@@ -29,10 +29,10 @@ impl ShooterSystem {
         dir: hale::Vector2,
         player_vel: hale::Vector2,
     ) {
-        let vel = dir * 300. + player_vel * 0.5
-             + hale::Vector2::new(hale::rand::gen_range(-20.0, 20.0), hale::rand::gen_range(-20.0, 20.0));
-        let origin = pos + dir * 15. + hale::Vector2::new(0., 5.) + vel * 0.016 
-            + hale::Vector2::new(hale::rand::gen_range(-3.0, 3.0), hale::rand::gen_range(-3.0, 3.0));
+        let vel = dir * 300. + hale::Vector2::new(
+            hale::rand::gen_range(-40.0, 40.0), 
+            hale::rand::gen_range(-40.0, 40.0));
+        let origin = pos + player_vel * 0.02;
 
         let ttl = 0.1;
         let damage = 1;
@@ -52,7 +52,7 @@ impl ShooterSystem {
                         &format!("flamethrower_bullet_{}.png", hale::rand::gen_range::<i32>(0, 1)))
                     .with_pivot(hale::Vector2::new(0.5, 0.5))
                     .with_rotation(vel.angle()),
-                layer: 0,
+                layer: 666,
             })
             .add_component(Bullet { damage })
             .add_component(TTL { time_left: ttl })

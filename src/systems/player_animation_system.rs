@@ -1,4 +1,4 @@
-use hale::FamilyContainer;
+use hale::{FamilyContainer, Point2, Vector2};
 
 use crate::player_animation::*;
 
@@ -11,9 +11,8 @@ impl PlayerAnimationSystem {
 
         let vel = (cursor.position.position - e.position.position).unit();
 
-        let angle = vel.y.atan2(vel.x);
+        let angle = vel.y.atan2(vel.x);        
         let dir = (8.0 * angle / (2.0 * std::f32::consts::PI) + 8.5) as usize % 8;
-
         let player = &mut e.sprite_animation.player;
         if e.mob.move_dir.length() >= 0.1 {
             player.set_sequence("run");
@@ -31,20 +30,21 @@ impl PlayerAnimationSystem {
         player.update_sprite(&mut weapon.sprite.sprite);
 
         let offsets = [
-            hale::Vector2::new(3., 5.),
-            hale::Vector2::new(4., 8.),
-            hale::Vector2::new(0., 8.),
-            hale::Vector2::new(-4., 8.),
-            hale::Vector2::new(-4., 5.),
-            hale::Vector2::new(-3., 2.),
-            hale::Vector2::new(0., -3.),
-            hale::Vector2::new(3., 2.),
+            (Vector2::new(3., 5.), Point2::new(15.0, 5.0)),
+            (Vector2::new(4., 8.), Point2::new(12.0, 12.0)),
+            (Vector2::new(0., 8.), Point2::new(0.0, 16.0)),
+            (Vector2::new(-4., 8.), Point2::new(-12.0, 12.0)),
+            (Vector2::new(-4., 5.), Point2::new(-15.0, 5.0)),
+            (Vector2::new(-3., 2.), Point2::new(-10.0, -5.0)),
+            (Vector2::new(0., -3.), Point2::new(0.0, -12.0)),
+            (Vector2::new(3., 2.), Point2::new(10.0, -5.0)),
         ];
         if dir < 5 {
             weapon.sprite.layer = e.sprite.layer + 1;
         } else {
             weapon.sprite.layer = e.sprite.layer - 1;
         }
-        weapon.position.position = e.position.position + offsets[dir]; 
+        weapon.gun.muzzle = offsets[dir].1;
+        weapon.position.position = e.position.position + offsets[dir].0; 
     }
 }

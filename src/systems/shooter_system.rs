@@ -13,12 +13,26 @@ impl ShooterSystem {
 
         if e.shooter.shooting && *cooldown < 0.01 {
             *cooldown = gun.cooldown;
+
+            let muzzle_position = e.position.position + gun.muzzle;
+
+            if e.shooter.smokes >= 0 {
+                e.shooter.smokes -= 1;
+                create_smoke(self.get_world(), self.get_api(), muzzle_position);
+            } else if hale::rand::gen_range::<i32>(0, 20) == 0 {
+                create_smoke(self.get_world(), self.get_api(), muzzle_position);
+            }
+
             self.spawn_bullet(
                 &gun.kind,
-                e.position.position + gun.muzzle,
+                muzzle_position,
                 e.shooter.shoot_dir,
                 e.velocity.velocity,
             );
+        }
+
+        if e.shooter.shooting == false {
+            e.shooter.smokes = 3;
         }
     }
 
@@ -29,9 +43,10 @@ impl ShooterSystem {
         dir: hale::Vector2,
         player_vel: hale::Vector2,
     ) {
-        let vel = dir * 300. + hale::Vector2::new(
-            hale::rand::gen_range(-40.0, 40.0), 
-            hale::rand::gen_range(-40.0, 40.0));
+        let vel = (dir + hale::Vector2::new(-dir.y, dir.x) * hale::rand::gen_range(-0.4, 0.4)).unit() * 300.;
+        // let vel = dir * 300. + hale::Vector2::new(
+        //     hale::rand::gen_range(-60.0, 60.0), 
+        //     hale::rand::gen_range(-60.0, 60.0));
         let origin = pos + player_vel * 0.02;
 
         let ttl = 0.1;

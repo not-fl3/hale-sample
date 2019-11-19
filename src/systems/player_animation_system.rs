@@ -11,7 +11,7 @@ impl PlayerAnimationSystem {
 
         let vel = (cursor.position.position - e.position.position).unit();
 
-        let angle = vel.y.atan2(vel.x);        
+        let angle = vel.y.atan2(vel.x);
         let dir = (8.0 * angle / (2.0 * std::f32::consts::PI) + 8.5) as usize % 8;
         let player = &mut e.sprite_animation.player;
         if e.mob.move_dir.length() >= 0.1 {
@@ -21,13 +21,9 @@ impl PlayerAnimationSystem {
         }
         
         player.set_direction(dir);
-        player.update(delta);
-        player.update_sprite(&mut e.sprite.sprite);
 
         let player = &mut weapon.sprite_animation.player;
         player.set_direction(dir);
-        player.update(delta);
-        player.update_sprite(&mut weapon.sprite.sprite);
 
         let offsets = [
             (Vector2::new(3., 5.), Point2::new(15.0, 5.0)),

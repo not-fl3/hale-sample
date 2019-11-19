@@ -10,6 +10,53 @@ struct GameStage;
 
 impl api::Stage for GameStage {}
 
+pub fn create_smoke(world: &mut World, api: &mut api::Api, position: hale::Point2) {
+    world
+        .create_entity()
+        .add_component(Sprite {
+            sprite: hale::api::Sprite::new(),
+            layer: 10000
+        })
+        .add_component(SpriteAnimation {
+            player: hale::AnimationPlayer::new(
+                api.get_resource::<hale::api::Animation>("Smoke"),
+                "smoke",
+                "default",
+            ),
+        })
+        .add_component(Smoke {
+            speed: hale::Vector2::new(hale::rand::gen_range(-20f32, 20f32), -50.)
+        })
+        .add_component(Position {
+            position
+        })
+        .add_component(TTL { time_left: 0.5 }); 
+}
+
+pub fn create_fire(world: &mut World, api: &mut api::Api, position: hale::Point2) {
+    world
+        .create_entity()
+        .add_component(Sprite {
+            sprite: hale::api::Sprite::new(),
+            layer: 10000
+        })
+        .add_component(SpriteAnimation {
+            player: hale::AnimationPlayer::new(
+                api.get_resource::<hale::api::Animation>("Smoke"),
+                "fire",
+                "default",
+            ),
+        })
+        .add_component(Smoke {
+            speed: hale::Vector2::new(hale::rand::gen_range(-40f32, 40f32), -50.)
+        })
+        .add_component(Position {
+            position
+        })
+        .add_component(TTL { time_left: 0.25 }); 
+}
+
+
 fn create_player(world: &mut World, api: &mut api::Api, position: hale::Point2) {
     let weapon = world
         .create_entity()
@@ -29,7 +76,7 @@ fn create_player(world: &mut World, api: &mut api::Api, position: hale::Point2) 
             cooldown: 0.01,
             kind: "flamethrower".to_string(),
             muzzle: hale::Point2::new(0., 0.)
-        })        
+        })
         .uid();
 
     world
@@ -64,6 +111,7 @@ fn create_player(world: &mut World, api: &mut api::Api, position: hale::Point2) 
             shooting: false,
             shoot_dir: hale::Vector2::new(0., 0.),
             cooldown: 0.0,
+            smokes: 0,
             weapon
         })
         .add_component(Collider {
@@ -113,6 +161,51 @@ fn create_obstacle(world: &mut World, rect: hale::Rect) {
         });
 }
 
+fn create_base(world: &mut World, api: &mut api::Api, position: hale::Point2) {
+    world
+        .create_entity()
+        .add_component(Position {
+            position: position,
+        })
+        .add_component(Collider {
+            rect: hale::Rect::new(-15., -15., 30., 30.),
+            layer: 1,
+            trigger: false,
+            is_static: true,
+        })
+        .add_component(Sprite {
+            sprite: hale::api::Sprite::new()
+                .with_spritesheet(
+                    api.resources(),
+                    "spritesheet.json",
+                    "base.png",
+                )
+                .with_pivot(hale::Vector2::new(0.5, 0.5)),
+            layer: -20,
+        })
+        .add_component(Health { max: 40, current: 40 })
+        .add_component(Healthbar { width: 40., offset: 25. });
+
+    world
+        .create_entity()
+        .add_component(Position {
+            position: position + hale::Vector2::new(0., -20.),
+        })
+        .add_component(Sprite {
+            sprite: hale::api::Sprite::new(),
+            layer: 20000,
+        })
+        .add_component(SpriteAnimation {
+            player: hale::AnimationPlayer::new(
+                api.get_resource::<hale::api::Animation>("Crystal"),
+                "default",
+                "default",
+            ),
+        })
+;
+
+}
+
 fn create_room(world: &mut World, api: &mut api::Api, pos: hale::Point2, id: hale::EntityId) {
     world
         .create_entity()
@@ -153,7 +246,9 @@ fn create_room(world: &mut World, api: &mut api::Api, pos: hale::Point2, id: hal
             });
     }
 
-    create_obstacle(world, hale::Rect::new(224. + 350., 232. + 350., 48., 48.));
+    create_base(world, api, hale::Point2::new(340., 300.));
+
+    //create_obstacle(world, hale::Rect::new(224. + 350., 232. + 350., 48., 48.));
 }
 
 fn main() {

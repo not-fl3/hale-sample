@@ -16,7 +16,7 @@ impl SpriteRenderSystem {
             let sprite = &mut e.sprite.sprite;
 
             sprite.set_position(e.position.position);
-            painter.draw_sprite(sprite);
+            painter.draw_sprite(sprite, e.sprite.layer == 20000);
         }
     }
 }

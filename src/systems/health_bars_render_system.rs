@@ -11,11 +11,11 @@ impl HealthBarsRenderSystem {
 
         for e in main_family {
             let health = e.health.current as f32 / e.health.max as f32;
-            let bar_width = 20.0;
-            let black_bar_rect = Rect::new(e.position.position.x, e.position.position.y - 12.0, bar_width, 3.0);
+            let bar_width = e.healthbar.width;
+            let black_bar_rect = Rect::new(e.position.position.x, e.position.position.y - e.healthbar.offset, bar_width, 3.0);
             let red_bar_rect = Rect::new(
                 e.position.position.x - (bar_width - bar_width * health) * 0.5, 
-                e.position.position.y - 12.0, 
+                e.position.position.y - e.healthbar.offset, 
                 bar_width * health, 
                 3.0);
 

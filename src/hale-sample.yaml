@@ -25,7 +25,7 @@ component:
 
 ---
 
-component: 
+component:
   name: Sprite
   members:
     - sprite: hale::Sprite
@@ -33,7 +33,7 @@ component:
 
 ---
 
-component: 
+component:
   name: SpriteAnimation
   members:
     - player: hale::AnimationPlayer
@@ -101,6 +101,7 @@ component:
     - shoot_dir: hale::Vector2
     - cooldown: f32
     - weapon: hale::EntityId
+    - smokes: i32
 
 ---
 
@@ -149,6 +150,21 @@ component:
 
 component:
   name: Cursor
+
+---
+
+component:
+  name: Smoke
+  members:
+    - speed: hale::Vector2
+
+---
+
+component:
+  name: Healthbar
+  members:
+    - width: f32
+    - offset: f32
 
 ---
 
@@ -337,8 +353,7 @@ system:
 system: 
   name: EnemyAnimation
   families:
-    - main:
-      - Sprite: write
+    - main:      
       - SpriteAnimation: write
       - Mob: read
       - Enemy: read
@@ -363,6 +378,15 @@ system:
     - cursor:
       - Position: read
       - Cursor: read
+
+---
+
+system: 
+  name: SpriteAnimation
+  families:
+    - main:
+      - Sprite: write
+      - SpriteAnimation: write
 
 ---
 
@@ -393,12 +417,13 @@ system:
 
 ---
 
-system: 
+system:
   name: HealthBarsRender
   families:
     - main:
       - Position: read
       - Health: read
+      - Healthbar: read
     - camera:
       - Camera: write
   method: render
@@ -406,6 +431,27 @@ system:
 
 ---
 
+system:
+  name: Smoke
+  families:
+    - main:
+      - Smoke: read
+      - Position: write
+
+---
+
+system: 
+  name: BulletFx
+  families:
+    - main:
+      - Collider: read
+      - Bullet: read
+      - Position: read
+  messages:
+    - Collision: receive
+  access: ['world', 'api']
+
+---
 
 message: 
   name: Collision

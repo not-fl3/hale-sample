@@ -66,6 +66,7 @@ impl EnemySpawningSystem {
                 is_static: false,
             })
             .add_component(Health { max: 20, current: 20 })
+            .add_component(Healthbar { width: 20., offset: 12. })
             .add_component(RepulseField { multiplier: 3.0 })
             .add_component(Flashing {
                 active: false,
